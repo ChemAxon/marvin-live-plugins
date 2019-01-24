@@ -1,0 +1,43 @@
+<style>
+.helm-topology tr.property-row td {
+	padding-top: 2px;
+}
+.helm-topology .property-row .property-name,
+.helm-topology .property-row .property-value {
+	border-bottom: 1px solid #dedede;
+}
+.helm-topology .property-row:last-child .property-name,
+.helm-topology .property-row:last-child .property-value {
+	border-bottom: 1px solid #e8e8e8;
+}
+.helm-topology .property-row .property-name {
+	min-width: 100px;
+	padding-right: 2px;
+}
+.helm-topology .property-row .property-value {
+	width: 70px;
+	text-align: right;
+	padding: 2px 2px 0;
+}
+.helm-topology tr:not(.property-row) td {
+	text-align: right;
+	color: #999;
+	padding: 0 2px;
+}
+</style>
+<table class="helm-topology">
+	<tr ng-if="client.hasPinnedValues">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>Current</td>
+		<td>Pinned</td>
+	</tr>
+	<tr ng-repeat="property in client.properties track by property.label" class="property-row">
+		<td ng-if="client.hasPinnedValues"><larger new="property.values[0]" base="property.values[1]"></larger></td>
+		<td ng-if="client.hasPinnedValues"><smaller new="property.values[0]" base="property.values[1]"></smaller></td>
+		<td class="property-name">{{property.label}}</span></td>
+		<td class="property-value">{{property.values[0]}}</td>
+		<td class="property-value" ng-if="client.hasPinnedValues">{{property.values[1]}}</td>
+	</tr>
+</table>

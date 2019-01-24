@@ -1,0 +1,110 @@
+<style>
+.reaxys-results {
+	overflow: hidden;
+}
+.reaxys-results .col-md-6 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.reaxys-results .col-md-6 img {
+	max-width: 100%;
+    max-height: 180px;
+    width: auto;
+    height: auto;
+}
+.reaxys-performance {
+	margin-top: 10px;
+}
+.reaxys-performance .horizontal-bars {
+	flex-grow: 1;
+}
+.reaxys-performance .horizontal-bar {
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 0px solid;
+    min-width: 16px;
+    border-radius: 2px;
+		height: 16px;
+		padding: 0 0 0 2px;
+}
+.reaxys-performance .horizontal-bar:nth-child(1) {
+	background: rgba(153, 153, 153, 0.5);
+	background: -webkit-linear-gradient(left, rgba(153, 153, 153, 0.5) 0%,#ffffff 100%);
+	background: linear-gradient(to right, rgba(153, 153, 153, 0.5) 0%,#ffffff 100%);
+}
+.reaxys-performance .horizontal-bar:nth-child(2) {
+	background: rgba(73, 130, 216, 0.5);
+	background: -webkit-linear-gradient(left, rgba(73, 130, 216, 0.5) 0%,#ffffff 100%);
+	background: linear-gradient(to right, rgba(73, 130, 216, 0.5) 0%,#ffffff 100%);
+}
+.reaxys-performance .horizontal-bar:nth-child(3) {
+	background: rgba(73, 130, 216, 0.5);
+	background: -webkit-linear-gradient(left, rgba(73, 130, 216, 0.5) 0%,#ffffff 100%);
+	background: linear-gradient(to right, rgba(73, 130, 216, 0.5) 0%,#ffffff 100%);
+}
+.reaxys-performance .horizontal-bar:nth-child(4) {
+	background: rgba(220, 220, 220, 0.5);
+	background: -webkit-linear-gradient(left, rgba(220, 220, 220, 0.5) 0%,rgba(239, 239, 239, 0.5) 90%, #fff 100%);
+	background: linear-gradient(to right, rgba(220, 220, 220, 0.5) 0%,rgba(239, 239, 239, 0.5) 90%, #fff 100%);
+}
+.reaxys-performance .glyphicon {
+	color: #666;
+}
+.reaxys-performance-login:before {
+	content: "\e205";
+}
+.reaxys-performance-search:before {
+	content: "\e529";
+}
+.reaxys-performance-metadata:before {
+	content: "\e365";
+}
+.reaxys-performance-image:before {
+	content: "\e139";
+}
+md-dialog[aria-label='Docs for Reaxys hits'] .md-dialog-content-body {
+	white-space: pre-line;
+}
+</style>
+
+<div ng-if="!client.hitCount">
+	<p>No matches.</p>
+
+</div>
+<div ng-show="client.hitCount > 0">
+	<p>{{client.hitCount}} hits found<span ng-if="client.citationHitCount"> in {{client.citationHitCount}} documents</span><span ng-if="client.hitCount > client.displayHitCount">. Showing first {{client.displayHitCount}}</span>:</p>
+	<pager ng-model="page" total="client.displayHitCount"></pager>
+
+	<div ng-repeat="item in client.hits" ng-if="(page - 1) * 4 <= $index && $index < page * 4">
+
+		<div class="col-md-6">
+
+			<img ng-src="{{item.base64image}}" structure="item.structures[0]" structure-data="item.data" />
+			<a target="_blank" ng-href="https://www.reaxys.com/reaxys/secured/hopinto.do?context=S&query=IDE.XRN=%27{{item.ide['IDE.XRN']}}%27&qname=&ln=">XRN{{item.ide["IDE.XRN"]}}</a>
+
+		</div>
+
+	</div>
+
+	<div class="clearfix"></div>
+
+	<a target="_blank" ng-if="client.hitCount > 0" ng-href="{{client.hopinto}}">Review all {{client.hopintoType}} hits</a>
+</div>
+
+<div class="reaxys-performance" ng-if="client.timing">
+	<div class="performance-details" layout="row">
+		<div class="horizontal-bars" layout="row">
+
+			<div class="horizontal-bar" ng-style="{'flex-basis': client.timing.parts[0] + '%'}" uib-tooltip="Login and conversion: {{client.timing.times[0]}} ms out of {{client.timing.total}} ms total" tooltip-append-to-body="true" tooltip-placement="top"><span class="glyphicon icon reaxys-performance-login"></span></div>
+
+			<div class="horizontal-bar" ng-style="{'flex-basis': client.timing.parts[1] + '%'}" uib-tooltip="Search: {{client.timing.times[1]}} ms out of {{client.timing.total}} ms total" tooltip-append-to-body="true" tooltip-placement="top"><span class="glyphicon icon reaxys-performance-search"></span></div>
+
+			<div class="horizontal-bar" ng-style="{'flex-basis': client.timing.parts[2] + '%'}" uib-tooltip="IDs and facts: {{client.timing.times[2]}} ms out of {{client.timing.total}} ms total" tooltip-append-to-body="true" tooltip-placement="top"><span class="glyphicon icon reaxys-performance-metadata"></span></div>
+
+			<div class="horizontal-bar" ng-style="{'flex-basis': client.timing.parts[3] + '%'}" uib-tooltip="Image gen: {{client.timing.times[3]}} ms out of {{client.timing.total}} ms total" tooltip-append-to-body="true" tooltip-placement="top"><span class="glyphicon icon reaxys-performance-image"></span></div>
+		</div>
+		<div><span>{{client.timing.total / 1000 | number:2}}s</span></div>
+	</div>
+</div>

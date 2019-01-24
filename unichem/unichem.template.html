@@ -1,0 +1,7 @@
+<div>
+<p>{{client.count || 0}} hits across UniChem sources.</p>
+<ul>
+	<li ng-repeat="source in client.urls"><a ng-href="{{source.url}}" target="_blank">{{source.id}} in {{source.label}}</a></li>
+</ul>
+<p ng-if="client.count > 5"><a ng-href="https://www.ebi.ac.uk/unichem/frontpage/results?kind=InChIKey&sources=&incl=exclude&queryText={{}}" target="_blank">Review all hits</a></p>
+</div>

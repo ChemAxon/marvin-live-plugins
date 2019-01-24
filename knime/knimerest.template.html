@@ -1,0 +1,11 @@
+<div ng-if="client">
+	<p>Predicted activity: {{client["Tree Ensemble Prediction"]}} ({{client["Tree Ensemble Prediction (Confidence)"]}})</p>
+	<p ng-if="client.PCHEMBL_VALUE">P_ChemBL value: {{client["PCHEMBL_VALUE"]}}</p>
+	<p ng-if="client.JOURNAL">
+		Reference
+		<span ng-if="client['Match count']">for exact match:</span>
+		<span ng-if="!client['Match count']">for most similar ({{client['Similarity (query fingerprint Row0)'] | number:2 }}):</span>
+		{{client.JOURNAL}} {{client.YEAR}} v{{client.VOLUME}} {{client.ISSUE}} p{{client.FIRST_PAGE}}
+	</p>
+</div>
+<div ng-if="!client">Error occurred while executing the workflow.</div>

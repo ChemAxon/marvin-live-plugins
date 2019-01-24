@@ -1,0 +1,9 @@
+<div>
+    <h3>Successfully registered {{client.successCount}} molecule{{client.successCount === 1 ? "" : "s"}}</h3>
+
+    <ul ng-if="client.ids.length">
+        <li ng-repeat="id in client.ids"><a target="_blank" ng-href="{{client.baseUrl}}/client/index.html#/browse?id={{id}}">{{id}}</a></li>
+    </ul>
+    
+    <a class="md-button md-primary" ng-href="{{client.baseUrl}}/client/index.html#/search" target="_blank" ng-click="close()">View all compounds</a>
+</div>

@@ -1,0 +1,59 @@
+<style>
+.helm-dbaasp-results pager {
+	display: inline-block;
+}
+.helm-dbaasp-properties tr.property-row td {
+	padding-top: 2px;
+}
+.helm-dbaasp-properties .property-row .property-name,
+.helm-dbaasp-properties .property-row .property-value {
+	border-bottom: 1px solid #dedede;
+}
+.helm-dbaasp-properties .property-row:last-child .property-name,
+.helm-dbaasp-properties .property-row:last-child .property-value {
+	border-bottom: 1px solid #e8e8e8;
+}
+.helm-dbaasp-properties .property-row .property-name {
+	min-width: 100px;
+	padding-right: 2px;
+}
+.helm-dbaasp-properties .property-row .property-value {
+	min-width: 70px;
+	text-align: right;
+	padding: 2px 2px 0;
+}
+.helm-dbaasp-properties tr:not(.property-row) td {
+	color: #999;
+	padding: 0 2px;
+}
+</style>
+<div class="helm-dbaasp-results">
+	<div>Matches: {{client.results.count}}. <pager ng-model="page" total="client.results.details.length" items-per-page="1"></pager></div>
+	<br>
+	<div ng-repeat="peptideCard in client.results.details" ng-if="page - 1 == $index">
+		<p><a ng-href="https://dbaasp.org/dbaasp-site-new/peptide-card?id={{peptideCard.id}}" target="_blank">#{{peptideCard.id}} {{peptideCard.name}}</a></p>
+
+		<table class="helm-dbaasp-properties" ng-if="peptideCard.targetActivities.length">
+			<tr>
+				<td>Target Species</td>
+				<td>Activity Measure</td>
+				<td>Activity</td>
+			</tr>
+			<tr ng-repeat="property in peptideCard.targetActivities" class="property-row">
+				<td class="property-name">{{property.targetSpecies}}</td>
+				<td class="property-name">{{property.activityMeasure}}</td>
+				<td class="property-value">{{property.concentration}} {{property.unit}}</td>
+			</tr>
+		</table>
+		<br>
+		<p>Reference: <a ng-href="https://www.ncbi.nlm.nih.gov/pubmed/{{peptideCard.reference.pubMed}}/" target="_blank">{{peptideCard.reference.authors[0]}}., et al, <i>{{peptideCard.reference.journal}}</i>, <b>{{peptideCard.reference.articleYear}}</b>, {{peptideCard.reference.volume}}, {{peptideCard.reference.pages}}</a></p>
+		<p ng-if="peptideCard.pdb">PDB ID: <a ng-href="https://www.rcsb.org/structure/{{peptideCard.pdb}}" target="_blank">{{peptideCard.pdb}}</a></p>
+
+		<threedee-ngl persistence-setting="Viewer Settings" ng-if="peptideCard.pdb">
+			<protein-ngl name="peptideCard.pdb" pdb="peptideCard.pdbFile"></protein-ngl>
+		</threedee-ngl>
+
+	</div>
+</div>
+
+

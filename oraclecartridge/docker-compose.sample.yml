@@ -1,0 +1,20 @@
+version: '2'
+services:
+   marvin-live:
+        image: artifacts.chemaxon.com/mlive-docker-release-local/chemaxon/ml:latest
+        restart: always
+        ports:
+            - "8888:8888"
+        environment:
+          - ML_LICENSE=http://license-server/license.cxl
+          - ORACLE_CONNECTSTRING=jcb-oracle15.bpo.cxn:35001/tajcb
+          - ORACLE_USER=a
+          - ORACLE_PASSWORD=b
+          - JCWSURL=http://host.docker.internal:8080/webservices/
+        volumes:
+            - "/data/config.json:/config/config.json:ro"
+            - "/data/databases/:/databases"
+        volumes_from:
+          - oracleplugin
+    oracleplugin:
+        image: oracle-ml-plugin:latest

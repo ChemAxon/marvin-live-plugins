@@ -1,0 +1,17 @@
+{
+  "name": "ml-plugin-oraclecartridge",
+  "version": "1.0.0",
+  "description": "Marvin Live example plugin(s)",
+  "main": "search.realtime.js",
+  "scripts": {},
+  "author": "Andras Stracz",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "4.17.x",
+    "request": "^2.67.0",
+    "oracledb": "^2.3.0"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

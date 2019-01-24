@@ -1,0 +1,17 @@
+{
+  "name": "ml-plugin-surechembl",
+  "version": "2.0.0",
+  "description": "Marvin Live example plugin(s)",
+  "main": "surechembl.realtime.js",
+  "scripts": {},
+  "author": "Andras Stracz",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "4.17.x",
+    "request": "^2.67.0",
+    "q": "^1.4.1"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

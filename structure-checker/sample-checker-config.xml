@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkers>
+  <AbbreviatedGroupChecker contracted="true" excluded="Ala,Arg,Asn,Asp,Cys,Glu,Gln,Gly,His,Ile,Leu,Lys,Met,Phe,Pro,Ser,Thr,Trp,Tyr,Val" expanded="true" fixMode="fix" fixerClassName="chemaxon.fixers.UngroupFixer"/>
+  <MoleculeChargeChecker fixMode="fix" fixerClassName="chemaxon.fixers.NeutralizeChargeFixer" />
+  <ThreeDimensionChecker fixMode="fix" fixerClassName="chemaxon.fixers.CleanFixer" />
+  <WigglyBondChecker fixMode="fix" fixerClassName="chemaxon.fixers.ConvertToSingleBondFixer"/>
+  <WigglyDoubleBondChecker fixMode="fix" fixerClassName="chemaxon.fixers.ConvertToCrossedDoubleBondFixer"/>
+  <SubstructureChecker fixMode="fix" fixerClassName="chemaxon.fixers.SubstructureFixer" name="Nitro1 Checker" reactionSmarts="[O:3]=[N:1]=[O:2]&gt;&gt;[O-:2][N+:1]=[O:3]"/>
+  <SubstructureChecker fixMode="fix" fixerClassName="chemaxon.fixers.SubstructureFixer" name="Nitro2 Checker" reactionSmarts="[O:2][N:1][O:3]&gt;&gt;[O-:2][N+:1]=[O:3]"/>
+  <SubstructureChecker fixMode="fix" fixerClassName="chemaxon.fixers.SubstructureFixer" name="Nitro3 Checker" reactionSmarts="[O:2][N++:1]=[O:3]&gt;&gt;[O-:2][N+:1]=[O:3]"/>
+  <AttachedDataChecker fixMode="fix" fixerClassName="chemaxon.fixers.RemoveAttachedDataFixer"/>
+  <ValenceErrorChecker allowTraditionalNitrogen="false" fixMode="fix" fixerClassName="chemaxon.fixers.ValenceFixer"/>
+  <QueryAtomChecker fixMode="do_not_fix"/>
+  <PseudoAtomChecker excluded="" fixMode="do_not_fix"/>
+  <IncorrectTetrahedralStereoChecker fixMode="fix" fixerClassName="chemaxon.fixers.ClearWedgeFixer"/>
+  <NonStereoWedgeBondChecker fixMode="fix" fixerClassName="chemaxon.fixers.ClearWedgeFixer"/>
+</checkers>

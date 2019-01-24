@@ -1,0 +1,35 @@
+<style>
+.emolecules-results {
+	overflow: hidden;
+}
+.emolecules-results .col-md-6 img {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+</style>
+
+<div class="emolecules-results" ng-if="client">
+
+	<p ng-if="!client.rows.length">Matches: N/A</p>
+
+	<pager ng-model="page" total="client.rows.length"></pager>
+
+	<div ng-repeat="item in client.rows">
+
+		<div ng-if="$index % 2 == 0" class="clearfix"></div>
+
+		<div class="col-md-6" ng-if="(page - 1) * 4 <= $index && $index < page * 4">
+			<img ng-src="{{item.base64image}}" structure="item.mol">
+			<a ng-href="https://www.emolecules.com/cgi-bin/search?vid={{item.version_id}}" target="_blank" class="text-center">VID: {{item.version_id}} <span ng-if="item.similarity">({{item.similarity}})</span></a>
+		</div>
+	</div>
+</div>
+
+<div class="emolecules-results" ng-if="!client">
+
+	<p>No results.</p>
+
+</div>

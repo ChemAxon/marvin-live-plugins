@@ -1,0 +1,35 @@
+<style>
+.helm-alignment-results {}
+.helm-alignment-results .alignment-block {
+	display: inline-block;
+	white-space: nowrap;
+	margin-right: 5px;
+}
+.helm-alignment-results .alignment-block:last-child {
+	margin-right: 0;
+}
+.helm-alignment-results .alignment-pair {
+	display: inline-block;
+}
+.helm-alignment-results .alignment-letter {
+	width: 18px;
+	height: 18px;
+	text-align: center;
+	line-height: 18px;
+	font-family: monospace;
+}
+.helm-alignment-results .alignment-number {
+	font-size: 10px;
+	font-family: monospace;
+}
+</style>
+<div class="helm-alignment-results">
+	<div class="alignment-block" ng-repeat="block in client.sequences">
+		<div class="alignment-number">{{$index * 10}}</div>
+		<div class="alignment-pair" ng-repeat="pair in block">
+			<div class="alignment-letter" ng-style="{'background-color': pair.s1.color}">{{pair.s1.code}}</div>
+			<div class="alignment-letter" ng-style="{'background-color': pair.s2.color}">{{pair.s2.code}}</div>
+		</div>
+	</div>
+</div>
+<div ng-if="!client">Please pin a biomolecule and set another in the editor to get the alignment.</div>

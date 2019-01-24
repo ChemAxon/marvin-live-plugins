@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><xf>
+<request></request>
+<response version="1.0.361a">
+<status>OK</status>
+<message>0.032 sec</message>
+<results>
+<result>
+  <resultname>H001_6719507175299718692</resultname>
+  <resultsize>15</resultsize>
+  <dbname>RX150100RX</dbname>
+  <context>substances</context>
+  <created>2015-01-22:10:26:42.245</created>
+  <comment>saved 2015-01-22:10:26:42.245</comment>
+  <where_clause>structure('')</where_clause>
+<items>
+<item index="1">
+<facts>
+<fact display="Reaction" name="RX" parent="CHE" type="fact">2931</fact>
+<fact display="Structure" name="YY" parent="ID" type="fact">1</fact>
+<fact display="Substance Label" name="LB" parent="ID" type="fact">67</fact>
+<fact display="Patent-Specific Data" name="PSD" parent="ID" type="fact">13</fact>
+<fact display="Molecular BIN" name="MB" parent="ID" type="fact">1</fact>
+<fact display="Druglikeness" name="CALC" parent="ID" type="fact">1</fact>
+<fact display="External Identifiers" name="EXTID" parent="ID" type="fact">2</fact>
+<fact display="Derivative" name="CDER" parent="ID" type="fact">1</fact>
+<fact display="Purification" name="PUR" parent="ID" type="fact">1</fact>
+<fact display="Melting Point" name="MP" parent="PHY" type="fact">32</fact>
+<fact display="Boiling Point" name="BP" parent="PHY" type="fact">1</fact>
+<fact display="Adsorption (MCS)" name="ADSM" parent="PHY" type="fact">1</fact>
+<fact display="Chromatographic Data" name="CHROMAT" parent="PHY" type="fact">2</fact>
+<fact display="Crystal Property Description" name="CPD" parent="PHY" type="fact">8</fact>
+<fact display="Dissociation Exponent" name="DE" parent="PHY" type="fact">1</fact>
+<fact display="Electrical Moment" name="EM" parent="PHY" type="fact">2</fact>
+<fact display="Electrical Polarizability" name="ELP" parent="PHY" type="fact">1</fact>
+<fact display="Further Information" name="FINFO" parent="PHY" type="fact">1</fact>
+<fact display="Liquid/Liquid Systems (MCS)" name="LLSM" parent="PHY" type="fact">1</fact>
+<fact display="Optics" name="OPT" parent="PHY" type="fact">1</fact>
+<fact display="Partition octan-1-ol/water (MCS)" name="POW" parent="PHY" type="fact">1</fact>
+<fact display="NMR Spectroscopy" name="NMR" parent="SPE" type="fact">33</fact>
+<fact display="IR Spectroscopy" name="IR" parent="SPE" type="fact">10</fact>
+<fact display="Mass Spectrometry" name="MS" parent="SPE" type="fact">10</fact>
+<fact display="UV/VIS Spectroscopy" name="UV" parent="SPE" type="fact">7</fact>
+<fact display="Luminescence Spectroscopy" name="LUM" parent="SPE" type="fact">1</fact>
+<fact display="Phosphorescence Spectroscopy" name="PHO" parent="SPE" type="fact">2</fact>
+<fact display="Pharmacological Data" name="PHARM" parent="PED" type="fact">30</fact>
+<fact display="Ecotoxicology" name="ECT" parent="PED" type="fact">4</fact>
+<fact display="Isolation from Natural Product" name="INP" parent="NPR" type="fact">2</fact>
+<fact display="Presence as Reactant" name="RCT" parent="CHE" type="fact">2882</fact>
+<fact display="Presence as Product" name="PRO" parent="CHE" type="fact">49</fact>
+<fact display="Chemical Behavior Presence" name="BEH" parent="CHE" type="fact">39</fact>
+<fact display="Preparation Presence" name="PRE" parent="CHE" type="fact">1466</fact>
+<fact display="Detailed Reaction Presence" name="DET" parent="CHE" type="fact">2844</fact>
+<fact display="Citation Number" name="CNR" parent="BIB" type="fact">769</fact>
+<fact display="Identification" name="ID" type="title">87</fact>
+<fact display="Bibliographic Data" name="BIB" type="title">769</fact>
+<fact display="Reaction Data" name="CHE" type="title">10211</fact>
+<fact display="Physical Data" name="PHY" type="title">52</fact>
+<fact display="Spectra" name="SPE" type="title">63</fact>
+<fact display="Bioactivity" name="PED" type="title">34</fact>
+<fact display="Natural Product" name="NPR" type="title">2</fact>
+</facts>
+</item>
+</items>
+</result>
+</results>
+</response>
+  <substances>
+    <substance index="1">
+      <IDE>
+        <IDE.XRN highlight="true">508509</IDE.XRN>
+        <IDE.XPR>28144-70-9</IDE.XPR>
+        <IDE.RN>28144-70-9</IDE.RN>
+        <IDE.CN>2-amino-benzamide</IDE.CN>
+        <IDE.CN>Anthranilamide</IDE.CN>
+        <IDE.CN>1-aminobenzene-2-carboxylic acid amide</IDE.CN>
+        <IDE.CN>ortho-aminobenzoylamine</IDE.CN>
+        <IDE.CN>antranilic acid amide</IDE.CN>
+        <IDE.CN>ortho-aminobenzamide</IDE.CN>
+        <IDE.CN>o-carbamoylaniline</IDE.CN>
+        <IDE.AUN>2-Amino-benzamide</IDE.AUN>
+        <IDE.REG>51e2948410b751a0b18347f0aff1c7b9</IDE.REG>
+        <IDE.LSF>C<sub>6</sub>H<sub>4</sub>(NH<sub>2</sub>)(CONH<sub>2</sub>)</IDE.LSF>
+        <IDE01>
+          <IDE.FMF>C<sub>7</sub>H<sub>8</sub>N<sub>2</sub>O</IDE.FMF>
+        </IDE01>
+        <IDE.MF>C<sub>7</sub>H<sub>8</sub>N<sub>2</sub>O</IDE.MF>
+        <IDE.HSF>C<sub>7</sub>H<sub>8</sub>N<sub>2</sub>O</IDE.HSF>
+        <IDE.IMF>C<sub>7</sub>H<sub>8</sub>N<sub>2</sub>O</IDE.IMF>
+        <IDE.IHSF>C<sub>7</sub>H<sub>8</sub>N<sub>2</sub>O</IDE.IHSF>
+        <IDE.CHA>0</IDE.CHA>
+        <IDE.ELC>C<sub>7</sub></IDE.ELC>
+        <IDE.ELC>H<sub>8</sub></IDE.ELC>
+        <IDE.ELC>N<sub>2</sub></IDE.ELC>
+        <IDE.ELC>O</IDE.ELC>
+        <IDE.IELC>C<sub>7</sub></IDE.IELC>
+        <IDE.IELC>H<sub>8</sub></IDE.IELC>
+        <IDE.IELC>N<sub>2</sub></IDE.IELC>
+        <IDE.IELC>O</IDE.IELC>
+        <IDE.NA>18</IDE.NA>
+        <IDE.NE>4</IDE.NE>
+        <IDE.NF>1</IDE.NF>
+        <IDE.NI>0</IDE.NI>
+        <IDE.INE>4</IDE.INE>
+        <IDE.MW>136.153</IDE.MW>
+        <IDE.STYPE>isocyclic</IDE.STYPE>
+        <IDE.INCHI>PXBFMLJZNCDSMP-UHFFFAOYSA-N</IDE.INCHI>
+        <IDE.INCHA>PXBFMLJZNCDSMP-JSGPKCTECW</IDE.INCHA>
+        <IDE.AVAIL>2</IDE.AVAIL>
+        <IDE.MAXPUB>2014</IDE.MAXPUB>
+        <IDE.NUMREF>769</IDE.NUMREF>
+        <IDE.MARKREF>9</IDE.MARKREF>
+        <IDE.FULLRXNS>47</IDE.FULLRXNS>
+        <IDE.HASBIO>1</IDE.HASBIO>
+        <IDE.ED>1989/06/29</IDE.ED>
+        <IDE.UPD>2015/01/09</IDE.UPD>
+      </IDE>
+      <FA>
+        <FA.FA>RX(2931),YY(1),LB(67),PSD(13),MB(1),CALC(1),EXTID(2),CDER(1),PUR(1),MP(32),BP(1),ADSM(1),CHROMAT(2),CPD(8),DE(1),EM(2),ELP(1),FINFO(1),LLSM(1),OPT(1),POW(1),NMR(33),IR(10),MS(10),UV(7),LUM(1),PHO(2),PHARM(30),ECT(4),INP(2),RCT(2882),PRO(49),BEH(39),PRE(1466),DET(2844),CNR(769)</FA.FA>
+      </FA>
+    </substance>
+  </substances>
+</xf>

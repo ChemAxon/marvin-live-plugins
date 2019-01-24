@@ -1,0 +1,117 @@
+<style>
+.sweetspot-container {
+    padding: 0 0 40px 45px;
+}
+.sweetspot {
+    width: 100%;
+    padding-top: 62%;
+    background: radial-gradient(ellipse at center, rgba(87,167,107,1) 0%, rgba(254,215,146,1) 35%, rgba(254,215,146,1) 36%, rgba(241,164,138,1) 73%, rgba(241,164,138,1) 100%);
+    position: relative;
+    border-left: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+.sweetspot .vertical-lines .vertical-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 1px;
+    border-left: 1px dashed #3d4f59;
+}
+.sweetspot .vertical-lines .vertical-axis {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+}
+.sweetspot .vertical-lines .vertical-tick {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 5px;
+    width: 1px;
+    border-left: 1px solid #908e8f;
+    text-indent: -4px;
+    line-height: 30px;
+    color: #444;
+}
+.sweetspot .horizontal-lines .horizontal-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px dashed #3d4f59;
+}
+.sweetspot .horizontal-lines .horizontal-axis {
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: rotate(-90deg);
+}
+.sweetspot .horizontal-lines .horizontal-tick {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 5px;
+    border-bottom: 1px solid #908e8f;
+    height: 10px;
+    text-indent: -33px;
+    text-align: center;
+    margin-top: -9px;
+    color: #444;
+}
+.sweetspot .diagonal-lines .diagonal-line-1 {
+    position: absolute;
+    transform: rotate(-17deg);
+    height: 1px;
+    width: 103%;
+    border-top: 2px dashed #ea7c1d;
+    top: 49%;
+    left: -10px;
+}
+.sweetspot .dots .dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    transition: bottom 0.2s ease, left 0.2s ease;
+}
+</style>
+<div class="sweetspot-container">
+    <div class="sweetspot">
+        <div class="vertical-lines">
+            <div class="vertical-axis">logP</div>
+            <div class="vertical-tick" style="left:0;">0</div>
+            <div class="vertical-tick" style="left:16.6%;">1</div>
+            <div class="vertical-tick" style="left:33.3%;">2</div>
+            <div class="vertical-tick" style="left:50%;">3</div>
+            <div class="vertical-tick" style="left:66.6%;">4</div>
+            <div class="vertical-tick" style="left:83.3%;">5</div>
+            <!-- 0.8 out of 6 --><div class="vertical-line" style="left:13.3%;" title="Waring low"></div>
+            <!-- 2 out of 6 --><div class="vertical-line" style="left:33.3%;" title="μM potency"></div>
+            <!-- 3.2 out of 6 --><div class="vertical-line" style="left:53.3%;" title="Waring high"></div>
+            <!-- 4 out of 6 --><div class="vertical-line" style="left:66.6%;" title="Gleeson high"></div>
+            <!-- 5 out of 6 --><div class="vertical-line" style="left:83.3%;" title="Lipinski high"></div>
+        </div>
+        <div class="horizontal-lines">
+            <div class="horizontal-axis">MW</div>
+            <div class="horizontal-tick" style="top:100%;">0</div>
+            <div class="horizontal-tick" style="top:87.5%;">100</div>
+            <div class="horizontal-tick" style="top:75%;">200</div>
+            <div class="horizontal-tick" style="top:62.5%;">300</div>
+            <div class="horizontal-tick" style="top:50%;">400</div>
+            <div class="horizontal-tick" style="top:37.5%;">500</div>
+            <div class="horizontal-tick" style="top:25%;">600</div>
+            <div class="horizontal-tick" style="top:12.5%;">700</div>
+            <!-- 250 out of 800 --><div class="horizontal-line" style="top:68.25%;" title="μM potency"></div>
+            <!-- 400 out of 800 --><div class="horizontal-line" style="top:50%;" title="Gleeson high"></div>
+            <!-- 500 out of 800 --><div class="horizontal-line" style="top:37.5%;" title="Lipinski high"></div>
+        </div>
+        <div class="diagonal-lines">
+            <div class="diagonal-line-1" title="Waring p50%"></div>
+        </div>
+        <div class="dots" ng-if="client.dots">
+            <div class="dot" ng-repeat="dot in client.dots track by dot.color" ng-style="{bottom: (100 * dot.y / 800) + '%', left: (100 * dot.x / 6) + '%', 'background-color': dot.color, border: '1px solid ' + dot.border}"></div>
+        </div>
+    </div>
+</div>

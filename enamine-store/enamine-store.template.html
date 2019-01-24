@@ -1,0 +1,33 @@
+<p>Matches: {{client.matches || 'N/A'}}</p>
+
+<style>
+.enamine-store-results {
+	overflow: hidden;
+}
+.enamine-store-results .col-md-6 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.enamine-store-results .col-md-6 img {
+	max-width: 100%;
+    max-height: 180px;
+    width: auto;
+    height: auto;
+}
+</style>
+
+<div class="enamine-store-results">
+	
+	<pager ng-model="page" total="client.compounds.length"></pager>
+	
+	<div ng-repeat="compound in client.compounds" ng-if="(page - 1) * 4 <= $index && $index < page  * 4">
+		<div ng-if="$index % 2 == 0" class="clearfix"></div>
+		<div class="col-md-6">
+			<img ng-src="{{compound.base64image}}" structure="compound.smile" structure-data="compound.data" />
+			<a target="_blank" ng-href="{{compound.productUrl}}">{{compound['id']}}</a><br>
+			<span ng-if="compound['cas']">CAS #: {{compound['cas']}}<br></span>
+			<span>{{compound['delivaryDays']}} - Stock(g): {{compound['availability']}}<br></span>
+		</div>
+	</div>
+</div>

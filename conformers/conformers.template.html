@@ -1,0 +1,5 @@
+<div ng-if="client">
+	<threedee-ngl>
+		<ligand-ngl ng-repeat="item in client.structures" molecule="item.mol" name="item.label" color="item.color" zoom-on-change="$index === 0"></ligand-ngl>
+	</threedee-ngl>
+</div>

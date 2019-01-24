@@ -1,0 +1,23 @@
+<style>
+	.pubchem-results {
+		overflow: hidden;
+	}
+</style>
+
+<div>Matches: {{client.total || 'N/A'}}</div>
+<div class="pubchem-results">
+
+	<div ng-repeat="item in client.hits | limitTo:4 ">
+
+		<div ng-if="$index % 2 == 0" class="clearfix"></div>
+
+		<div class="col-md-6">
+
+			<img ng-src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{{item.cid}}/PNG?image_size=300x240" structure="item.smiles">
+			<a target="_blank" ng-href="http://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{item.cid}}">
+				CID: {{item.cid}}
+			</a>
+
+		</div>
+	</div>
+</div>

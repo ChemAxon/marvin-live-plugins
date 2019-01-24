@@ -1,0 +1,15 @@
+<div ng-if="client">
+	<span ng-if="client.pdbCode && client.ligandCode">
+		Reference: <a href="https://www.rcsb.org/pdb/explore.do?structureId={{client.pdbCode}}#ligandsPanel" target="_blank">{{client.pdbCode}}</a> - {{client.ligandCode}}.
+	</span>
+	<br>
+	<threedee-ngl download-data="client.aligned" download-filename="client.downloadFilename" persistence-setting="Viewer Settings">
+		<protein-ngl ng-if="client.proteinFileType == 'pdb'" name="client.pdbCode" pdb="client.proteinFile"></protein-ngl>
+		<protein-ngl ng-if="client.proteinFileType == 'mmtf'" name="client.pdbCode" mmtf="client.proteinFile"></protein-ngl>
+		<ligand-ngl ng-if="client.aligned" name="'Idea'" molecule="client.aligned" color="client.colors[0]"></ligand-ngl>
+		<ligand-ngl ng-if="client.reference" name="client.ligandCode" molecule="client.reference" color="client.colors[1]" zoom-on-change="true" replaces="client.ligandCode"></ligand-ngl>
+	</threedee-ngl>
+</div>
+<div ng-if="!client">Couldn't calculate alignment. Using the configuration panel, please set a PDB code (from rcsb.org) and a three letter ligand code contained in this PDB to define the base structure.</div>
+
+<p ng-if="client.ligandCodes"><br>Couldn't find the specified ligand. These were found in the PDB file: <span ng-repeat="code in client.ligandCodes">{{code}}<span ng-if="!$last">, </span></span></p>

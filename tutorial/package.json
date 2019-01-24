@@ -1,0 +1,16 @@
+{
+  "name": "ml-plugin-tutorial",
+  "version": "1.0.0",
+  "description": "Marvin Live example plugin(s)",
+  "main": "myplugin.realtime.js",
+  "scripts": {},
+  "author": "Andras Stracz",
+  "license": "MIT",
+  "dependencies": {
+    "q": "^1.4.1",
+    "request": "^2.67.0"
+  },
+  "engines": {
+    "node": ">=8"
+  }
+}

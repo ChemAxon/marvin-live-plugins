@@ -1,0 +1,19 @@
+Runs live searches in Reaxys - all molecules drawn while the plugin is active will be sent through the firewall to Reaxys.com. Results are sorted by number of references.
+
+Terms used in the settings
+
+Position/Stereo Isomers: isomeric structures with different arrangements of the given structural elements.
+
+Near: includes structures containing the same ring and chain systems (possibly multiple) with the original relative positions of substituents and extended by further simple substituents such as hydrocarbons.
+
+Medium: includes structures with a wider range of rings and substituents: the degree of unsaturation, form and substitution patterns of rings is extended.
+
+Wide: includes a still wider range of substituents, but retaining to some extent the influence of the relative positions of substituents.
+
+Widest: as for Wide but without any restrictions on the relative positions of substituents.
+
+Substructure: allow rings in the hit that are connecting two atoms in the query but are not yet present in the query.
+
+Substructure with related Markush: same as substructure, but after a search for substances, add those substances to the result that are referenced from an initial hit as a Markush structure scheme.
+
+Filter facts with biological data: Query builder > add field "Bioactivity presence" > set to > 0.

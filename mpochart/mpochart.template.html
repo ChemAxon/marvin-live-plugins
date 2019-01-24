@@ -1,0 +1,54 @@
+<style>
+.mpo-score tr.property-row td {
+    padding-top: 2px;
+}
+.mpo-score .property-row .property-name {
+    min-width: 100px;
+    padding-right: 2px;
+}
+.mpo-score .property-row .property-name,
+.mpo-score .property-row .property-value {
+    border-bottom: 1px solid #dedede;
+}
+.mpo-score .property-row:last-child .property-name,
+.mpo-score .property-row:last-child .property-value {
+	border-bottom: 1px solid #e8e8e8;
+}
+.mpo-score .property-row .property-value {
+    width: 70px;
+    text-align: right;
+    padding: 2px 2px 0;
+}
+.mpo-score .property-row .property-green {
+    background-color: rgb(198, 245, 138);
+}
+.mpo-score .property-row .property-red {
+    background-color: rgb(242, 116, 110);
+}
+
+.mpo-score tr:not(.property-row) td {
+    text-align: right;
+	color: #999;
+    padding: 0 2px;
+}
+</style>
+
+<table class="mpo-score">
+	<tr ng-if="client.hasPinnedValues">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>Current</td>
+		<td>Pinned</td>
+	</tr>
+	<tr class="property-row">
+		<td ng-if="client.hasPinnedValues"><larger new="client.scores[0]" base="client.scores[1]"></larger></td>
+		<td ng-if="client.hasPinnedValues"><smaller new="client.scores[0]" base="client.scores[1]"></smaller></td>
+		<td class="property-name">MPO Score</td>
+		<td class="property-value" ng-class="{'property-green': client.scores[0] >= 4.5, 'property-red': client.scores[0] < 4.5}">{{client.scores[0]}}</td>
+		<td class="property-value" ng-class="{'property-green': client.scores[1] >= 4.5, 'property-red': client.scores[1] < 4.5}" ng-if="client.hasPinnedValues">{{client.scores[1]}}</td>
+	</tr>
+</table>
+<div class="mpo-chart">
+    <canvas class="chart chart-radar" chart-data="client.data" chart-series="client.series" chart-options="client.options" chart-labels="client.labels"></canvas>
+</div>

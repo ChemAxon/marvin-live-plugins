@@ -1,0 +1,99 @@
+<style>
+.project-haystack {
+	overflow: hidden;
+}
+.project-haystack .col-md-6 img {
+	display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+.ph-performance {
+	margin-top: 10px;
+}
+.performance-details .horizontal-bars {
+	flex-grow: 1;
+}
+.ph-performance .horizontal-bar {
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 0px solid;
+    min-width: 16px;
+    border-radius: 2px;
+		height: 16px;
+		padding: 0 0 0 2px;
+}
+.ph-performance .horizontal-bar:nth-child(1) {
+	background: rgba(73, 130, 216, 0.5);
+	background: -webkit-linear-gradient(left, rgba(73, 130, 216, 0.5) 0%,#ffffff 100%);
+	background: linear-gradient(to right, rgba(73, 130, 216, 0.5) 0%,#ffffff 100%);
+}
+.ph-performance .horizontal-bar:nth-child(2) {
+	background: rgba(153, 153, 153, 0.5);
+	background: -webkit-linear-gradient(left, rgba(153, 153, 153, 0.5) 0%,#ffffff 100%);
+	background: linear-gradient(to right, rgba(153, 153, 153, 0.5) 0%,#ffffff 100%);
+}
+.ph-performance .horizontal-bar:nth-child(3) {
+	background: rgba(220, 220, 220, 0.5);
+	background: -webkit-linear-gradient(left, rgba(220, 220, 220, 0.5) 0%,rgba(239, 239, 239, 0.5) 90%, #fff 100%);
+	background: linear-gradient(to right, rgba(220, 220, 220, 0.5) 0%,rgba(239, 239, 239, 0.5) 90%, #fff 100%);
+}
+.ph-performance .glyphicon {
+	color: #666;
+}
+.ph-performance-search:before {
+	content: "\e529";
+}
+.ph-performance-retrieve:before {
+	content: "\e365";
+}
+.ph-performance-image:before {
+	content: "\e139";
+}
+</style>
+
+<div class="project-haystack" ng-if="client">
+
+	<p ng-if="!client.rows.length">Matches: N/A</p>
+
+	<pager ng-model="page" total="client.rows.length"></pager>
+
+	<div ng-repeat="item in client.rows">
+
+		<div ng-if="$index % 2 == 0" class="clearfix"></div>
+
+		<div class="col-md-6" ng-if="(page - 1) * 4 <= $index && $index < page * 4">
+			<img ng-src="{{item.base64image}}" structure="item.molecule">
+			<span class="text-center" ng-if="item.bindingdb"><a target="_blank" ng-href="{{item.bindingdb_link}}">BindingDB{{item.bindingdb}}</a><br></span>
+			<span class="text-center" ng-if="item.chembl"><a target="_blank" ng-href="{{item.chembl_link}}">{{item.chembl}}</a><br></span>
+			<span class="text-center" ng-if="item.emolecules"><a target="_blank" ng-href="{{item.emolecules_link}}">eMolecules {{item.emolecules}}</a><br></span>
+			<span class="text-center" ng-if="item.fda_srs"><a target="_blank" ng-href="{{item.fda_srs_link}}">FDA_SRS: {{item.fda_srs}}</a><br></span>
+			<span class="text-center" ng-if="item.mcule"><a target="_blank" ng-href="{{item.mcule_link}}">{{item.mcule}}</a><br></span>
+			<span class="text-center" ng-if="item.molport_allstock"><a target="_blank" ng-href="{{item.molport_allstock_link}}">{{item.molport_allstock}} (stock)</a><br></span>
+			<span class="text-center" ng-if="item.molport_madetoorder"><a target="_blank" ng-href="{{item.molport_madetoorder_link}}">{{item.molport_madetoorder}} (order)</a><br></span>
+			<span class="text-center" ng-if="item.namiki">Namiki {{item.namiki}}<br></span>
+			<span class="text-center" ng-if="item.pubchem"><a target="_blank" ng-href="{{item.pubchem_link}}">PubChem {{item.pubchem}}</a><br></span>
+			<span class="text-center" ng-if="item.surechembl"><a target="_blank" ng-href="{{item.surechembl_link}}">{{item.surechembl}}</a><br></span>
+			<span class="text-center" ng-if="item.zinc"><a target="_blank" ng-href="{{item.zinc_link}}">{{item.zinc}}</a><br></span>
+		</div>
+	</div>
+</div>
+
+<div class="project-haystack" ng-if="!client">
+
+	<p>No results.</p>
+
+</div>
+
+<div class="ph-performance" ng-if="client.rows.length">
+	<div class="performance-details" layout="row">
+		<div class="horizontal-bars" layout="row">
+			<div class="horizontal-bar" ng-style="{'flex-basis': client.timing.parts[0] + '%'}" uib-tooltip="Search: {{client.timing.times[0]}} ms out of {{client.timing.total}} ms total" tooltip-append-to-body="true" tooltip-placement="top"><span class="glyphicon icon ph-performance-search"></span></div>
+			<div class="horizontal-bar" ng-style="{'flex-basis': client.timing.parts[1] + '%'}" uib-tooltip="Metadata: {{client.timing.times[1]}} ms out of {{client.timing.total}} ms total" tooltip-append-to-body="true" tooltip-placement="top"><span class="glyphicon icon ph-performance-retrieve"></span></div>
+			<div class="horizontal-bar" ng-style="{'flex-basis': client.timing.parts[2] + '%'}" uib-tooltip="Image gen: {{client.timing.times[2]}} ms out of {{client.timing.total}} ms total" tooltip-append-to-body="true" tooltip-placement="top"><span class="glyphicon icon ph-performance-image"></span></div>
+		</div>
+		<div><span>{{client.timing.total / 1000 | number:2}}s</span></div>
+	</div>
+</div>

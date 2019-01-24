@@ -1,0 +1,22 @@
+<style>
+.creg-results {
+	overflow: hidden;
+}
+</style>
+
+<div>Matches: {{client.resultsCount || 'N/A'}}
+	<div ng-show="client.resultsCount" class="creg-results">
+		
+	<pager ng-model="page" total="client.resultsPage.length"></pager>
+
+	<div ng-repeat="item in client.resultsPage" ng-if="(page - 1) * 4 <= $index && $index < (page) * 4">
+
+		<div class="col-md-6">
+
+			<img ng-src="{{item.imageUrl}}" structure="item.searchColumns.structure" structure-data="{ID: item.id}"/>
+			<a target="_blank" href="{{client.baseUrl + '/client/#/browse?id=' + item.id}}" class="text-center">{{item.id}} ({{1 - item.dissimilarity | number}})</a>
+
+		</div>
+
+	</div> 
+</div>

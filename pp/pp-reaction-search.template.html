@@ -1,0 +1,18 @@
+<style>
+.pp-reaction-search-results {
+	overflow: hidden;
+}
+</style>
+
+<div class="pp-reaction-search-results">
+	
+	<pager ng-model="client.page" total="client.hits.length" items-per-page="1"></pager>
+	
+	<div ng-repeat="reaction in client.hits" ng-if="(client.page - 1) <= $index && $index < client.page">
+		<div class="col-md-12">
+			<a target="_blank" ng-href="https://www.google.com/patents/{{reaction.patentId}}">{{reaction.patentId}}</a><br/>
+			<img ng-src="{{reaction.image}}" structure="reaction.reaction" />
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

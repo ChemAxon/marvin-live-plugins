@@ -1,0 +1,7 @@
+<div ng-if="client">
+	<threedee-ngl>
+		<ligand-ngl name="'Idea'" molecule="client.aligned" color="'#00ffff'"></ligand-ngl>
+		<ligand-ngl name="'Reference'" molecule="client.reference"  color="'#ffa736'" zoom-on-change="'true'"></ligand-ngl>
+	</threedee-ngl>
+</div>
+<div ng-if="!client">Couldn't calculate alignment. Please set a pinned structure if none is set.</div>

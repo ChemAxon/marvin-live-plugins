@@ -1,0 +1,17 @@
+{
+  "name": "ml-plugin-conformers",
+  "version": "1.0.0",
+  "description": "Marvin Live plugin(s)",
+  "main": "conformers.realtime.js",
+  "scripts": {},
+  "author": "Andras Stracz",
+  "license": "MIT",
+  "dependencies": {
+    "chroma-js": "^1.4.0",
+    "lodash": "4.17.x",
+    "request": "^2.67.0"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

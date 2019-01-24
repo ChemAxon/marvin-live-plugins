@@ -1,0 +1,26 @@
+<style>
+.herg-mmp-results {
+	overflow: hidden;
+}
+.herg-mmp-results pager {
+    display: inline-block;
+}
+.herg-mmp-results img {
+	max-width: 100%;
+	max-height: 180px;
+	width: auto;
+	height: auto;
+}
+</style>
+
+<div class="herg-mmp-results">
+
+	<div>Suggestions total: {{client.results.total || 'N/A'}}. <pager ng-model="page" total="client.results.data.length" items-per-page="2"></pager></div>
+
+	<div ng-repeat="hit in client.results.data" ng-if="(page - 1) * 2 <= $index && $index < page * 2">
+
+			<img ng-src="{{hit.base64image}}" />
+			<p>Occurrences: {{hit.occurrences}}. Median: {{hit.median | number:2}}. Min p value: {{hit.minimum | number:2}}. Max p value: {{hit.maximum | number:2}}</p>
+
+	</div>
+</div>

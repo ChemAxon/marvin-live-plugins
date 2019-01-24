@@ -1,0 +1,24 @@
+<style>
+.structure-checker-results {
+
+}
+.structure-checker-results .checker-name {
+	color: #d9534f;
+	font-weight: bold;
+}
+.structure-checker-results .checker-description {
+	color: #d9534f;
+}
+.structure-checker-results .md-button {
+	margin: 0;
+}
+</style>
+
+<div ng-if="client.issues" class="structure-checker-results">
+	<p ng-repeat="issue in client.issues">
+		<span class="checker-name">{{issue.checkerName}}</span>
+		<span class="checker-description">{{issue.description}}</span>
+	</p>
+	<md-button class="md-primary" ng-disabled="!client.fixPossible" ng-if="client.fixedStructure && client.issues.length" use-structure="'load'" structure="client.fixedStructure">Fix all</md-button>
+</div>
+<div ng-if="!client.issues.length">No issues found. {{client.goodJob}}</div>

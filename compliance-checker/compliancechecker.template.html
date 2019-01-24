@@ -1,0 +1,9 @@
+<p ng-if="!client.total">No matching legislations.</p>
+<p ng-if="client.total">{{client.total}} matching legislations.</p>
+<p ng-repeat="hit in client.hits" class="cchecker_hit">
+	<a ng-href="{{hit.legislativeLinks}}" target="_blank">{{hit.categoryName}}</a><br>
+	<span>({{hit.molName}})</span><br>
+</p>
+<p ng-if="client.total > 0">
+	<a ng-href="{{client.server + '/cc-web'}}" target="_blank">Review legislations</a>.
+</p>

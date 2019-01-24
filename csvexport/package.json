@@ -1,0 +1,17 @@
+{
+  "name": "ml-plugin-csv-export",
+  "version": "1.0.0",
+  "description": "Marvin Live example plugin(s)",
+  "main": "csv.export.js",
+  "scripts": {},
+  "author": "Andras Stracz",
+  "license": "MIT",
+  "dependencies": {
+    "json2csv": "^4.2.1",
+    "lodash": "4.17.x",
+    "request": "^2.67.0"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

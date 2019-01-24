@@ -1,0 +1,39 @@
+<p>Matches: {{client.page_meta.total_count || 'N/A'}}</p>
+
+<style>
+	.chembl-results {
+		overflow: hidden;
+	}
+	.chembl-results .col-md-6 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.chembl-results .col-md-6 img {
+		max-width: 100%;
+		max-height: 180px;
+		width: auto;
+		height: auto;
+	}
+</style>
+
+<div class="chembl-results">
+
+	<pager ng-model="page" total="client.molecules.length" items-per-page="2"></pager>
+
+	<div ng-repeat="molecule in client.molecules" ng-if="(page - 1) * 2 <= $index && $index < page * 2">
+		<div class="col-md-6">
+			<a target="_blank" ng-href="https://www.ebi.ac.uk/chembl/compound/inspect/{{molecule.molecule_chembl_id}}">{{molecule.molecule_chembl_id}}</a>
+			Sim: {{molecule.similarity / 100 | number:2 }}<br/>
+			<img ng-src="{{molecule.base64image}}" structure="molecule.molecule_structures.canonical_smiles" structure-data="molecule.structureData" />
+		</div>
+		<div class="col-md-6">
+			<span ng-repeat="activity in molecule.activities">
+				{{activity.standard_type}} {{activity.standard_relation}} {{activity.standard_value}}{{activity.standard_units}}
+				(<a target="_blank" href="https://www.ebi.ac.uk/chembl/assay/inspect/{{activity.assay_chembl_id}}">{{activity.target_pref_name}}</a>)
+				<br/>
+			</span>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
